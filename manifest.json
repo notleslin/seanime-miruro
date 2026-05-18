@@ -1,12 +1,12 @@
 {
-  "id": "miruro-onlinestream-provider",
+  "id": "miruro",
   "name": "Miruro",
-  "description": "Miruro streaming provider",
-  "manifestURI": "https://reviving-overlaid-lumber.ngrok-free.dev/miruro-onlinestream-provider.json",
   "version": "1.0.0",
-  "author": "Leslin",
+  "manifestURI": "https://raw.githubusercontent.com/notleslin/seanime-miruro/main/manifest.json",
+  "language": "typescript",
   "type": "onlinestream-provider",
-  "language": "javascript",
-  "lang": "multi",
-  "payloadURI": "https://reviving-overlaid-lumber.ngrok-free.dev/miruro-provider.js"
+  "description": "Miruro provider for Seanime",
+  "author": "Leslin",
+  "lang": "en",
+  "payloadURI": "https://raw.githubusercontent.com/notleslin/seanime-miruro/main/provider.ts"
 }
