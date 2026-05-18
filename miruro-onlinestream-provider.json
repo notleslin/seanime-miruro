@@ -1,0 +1,12 @@
+{
+  "id": "miruro-onlinestream-provider",
+  "name": "Miruro",
+  "description": "Miruro streaming provider",
+  "manifestURI": "https://reviving-overlaid-lumber.ngrok-free.dev/miruro-onlinestream-provider.json",
+  "version": "1.0.0",
+  "author": "Leslin",
+  "type": "onlinestream-provider",
+  "language": "javascript",
+  "lang": "multi",
+  "payloadURI": "https://reviving-overlaid-lumber.ngrok-free.dev/miruro-provider.js"
+}

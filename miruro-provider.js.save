@@ -1,0 +1,91 @@
+      id: String(anime.anilistId || anime.id),
+        title: anime.title || anime.romaji || anime.english || "Unknown",
+        image: anime.image || "",
+        providerData: {
+          animeId: anime.id
+        }
+      });
+    }
+
+    return results;
+  }
+
+  async getAnime(opts) {
+
+    return {
+      id: String(opts.id),
+      title: "",
+      image: "",
+      description: ""
+    };
+  }
+
+  async getEpisodes(opts) {
+
+    var animeId = opts.providerData
+      ? opts.providerData.animeId
+      : opts.id;
+
+    var res = $fetch(API + "/anime/" + animeId + "/episodes");
+    var data = JSON.parse(res);
+
+    var episodes = [];
+
+    if (!data || !data.length) {
+      return [];
+    }
+
+    for (var i = 0; i < data.length; i++) {
+
+      var ep = data[i];
+
+      episodes.push({
+        id: String(ep.id),
+        number: ep.number || (i + 1),
+        title: ep.title || ("Episode " + (i + 1))
+      });
+    }
+
+    return episodes;
+  }
+
+  async getEpisodeServers(opts) {
+
+    return [
+      {
+        id: opts.episodeId,
+        displayName: "Miruro"
+      }
+    ];
+  }
+
+  async getEpisodeSources(opts) {
+
+    var res = $fetch(API + "/episodes/" + opts.serverId + "/sources");
+    var data = JSON.parse(res);
+
+    var sources = [];
+
+    if (data && data.streams) {
+
+      for (var i = 0; i < data.streams.length; i++) {
+
+        var stream = data.streams[i];
+
+        if (stream.url) {
+
+          sources.push({
+            url: stream.url,
+            type: "hls",
+            quality: stream.quality || "auto"
+          });
+        }
+      }
+    }
+
+    return {
+      sources: sources,
+      subtitles: []
+    };
+  }
+}
